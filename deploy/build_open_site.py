@@ -53,7 +53,7 @@ def page(title, body, depth=0):
     up = "../" * depth
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title>{HEAD_EXTRA}<style>{CSS}</style></head><body>
-<header><div class="in"><b>When the Buildout Breaks</b><a href="/paper">Paper</a><a href="/">Dashboard</a><a href="{up}index.html">Open source</a><a href="{up}docs/01-overview.html">Docs</a><a href="{up}src/index.html">Source</a><span class="sp"></span><a href="https://github.com/YassinKkhalil4/when-the-buildout-breaks">GitHub</a><a href="{BASE}/ai-bust-open.zip">Download .zip</a></div></header>
+<header><div class="in"><b>When the Buildout Breaks</b><a href="/paper">Paper</a><a href="/">Dashboard</a><a href="{up}index.html">Open source</a><a href="{up}docs/01-overview.html">Docs</a><a href="{up}src/index.html">Source</a><span class="sp"></span><a href="https://github.com/YassinKhalil/when-the-buildout-breaks">GitHub</a><a href="{BASE}/ai-bust-open.zip">Download .zip</a></div></header>
 <main>{body}</main></body></html>"""
 
 

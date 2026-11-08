@@ -29,7 +29,7 @@ Weighted by those odds: expected credit losses of \$23–57B depending on the mo
 Python 3.12, about 2 CPU cores.
 
 ```bash
-git clone https://github.com/YassinKkhalil4/when-the-buildout-breaks.git && cd when-the-buildout-breaks
+git clone https://github.com/YassinKhalil/when-the-buildout-breaks.git && cd when-the-buildout-breaks
 bash setup.sh                      # venv, dependencies, the 10 unit tests, an offline end-to-end run
 export AI_BUST_UA="Your Name your@email"   # SEC requires a descriptive User-Agent
 python ai_bust_live.py refresh --live      # pull live data and recompute (about 90 s)

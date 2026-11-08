@@ -5,7 +5,7 @@ type: software
 version: "2.0.0"
 date-released: "2026-10-06"
 license: Apache-2.0
-repository-code: "https://github.com/YassinKkhalil4/when-the-buildout-breaks"
+repository-code: "https://github.com/YassinKhalil/when-the-buildout-breaks"
 authors:
   - given-names: "Yassin"
     family-names: "Khalil"
