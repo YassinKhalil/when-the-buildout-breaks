@@ -93,5 +93,22 @@ class LiveMapping(unittest.TestCase):
         self.assertTrue(all("paper default" in prov[k] for k in ("sigma", "nc_spread", "r_free")))
 
 
+
+
+class AgentReadable(unittest.TestCase):
+    def test_summary_and_page(self):
+        import json, os, unified_site as U
+        here = os.path.dirname(os.path.abspath(__file__))
+        run = json.load(open(os.path.join(here, "public", "data", "latest_run.json")))
+        md = U.summary_md(run)
+        self.assertIn("CVaR95", md)
+        self.assertIn(f"{100 * run['odds']['economic_bust']['end-2028']['median']:.0f}%", md)
+        page = U.index_html(here)
+        self.assertIn('"@type": "Dataset"', page)
+        self.assertIn("<noscript>", page)
+        self.assertNotIn("<!--SSR-->", page)
+        json.dumps(U.DATA_DICTIONARY)
+
+
 if __name__ == "__main__":
     unittest.main()
