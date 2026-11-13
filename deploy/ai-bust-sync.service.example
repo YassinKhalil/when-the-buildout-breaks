@@ -1,0 +1,5 @@
+[Unit]
+Description=Fetch the nightly AI-bust simulation data
+[Service]
+Type=oneshot
+ExecStart=/root/paper/deploy/ai-bust-sync.sh

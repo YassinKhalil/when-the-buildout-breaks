@@ -40,6 +40,12 @@ python build_site.py               # build the paper page, served at /paper
 The dashboard has **no login**. It binds to `127.0.0.1` only; view it over an SSH tunnel (`ssh -L 8000:127.0.0.1:8000 user@server`). To publish it, put a reverse proxy in front that allows only GET and HEAD and blocks `/api/refresh`
 (see `deploy/Caddyfile.example`).
 
+## Nightly quantitative pipeline (10,000 draws)
+
+`python scripts/run_pipeline.py` pulls SPY/SMH prices and SMH option vol (yfinance) and the high-yield spread and T-bill rate (FRED; set `FRED_API_KEY` or it uses the keyless CSV), re-pools the paper's odds on them, then runs **10,000 draws** each of Model D (exact, numpy-vectorised, parallel with joblib, checked against the scalar model in `test_quant.py`) and Model F (a regression emulator fitted to 360 real agent-based runs; `scripts/train_surrogate_f.py` regenerates the training set). It writes `public/data/latest_run.json` (EV = median, VaR95, CVaR95, histogram buckets, density curves) and appends a row to `public/data/historical_risk.csv`. The whole run takes a few seconds.
+
+`.github/workflows/daily-sim.yml` runs it every weekday night and commits the two files. The front end (`public/index.html`, `public/ui/`) only reads them; the app serves it at `/`, the paper inside it behind "View Working Paper & Deep Dive", and the original dashboard at `/dashboard`. `deploy/ai-bust-sync.*` is an optional timer that pulls the commit on the server.
+
 ## Reproducing the results
 
 | Command | What it does | Time on 2 vCPUs |

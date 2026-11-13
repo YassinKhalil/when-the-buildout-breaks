@@ -580,6 +580,10 @@ try:
 
     @app.get("/", response_class=HTMLResponse)
     def index():
+        import unified_site                                  # unified overview + deep dive; falls back to the original dashboard
+        page = unified_site.index_html(HERE)
+        if page is not None:
+            return HTMLResponse(page, headers={"Cache-Control": "no-cache"})
         with open(os.path.join(HERE, "dashboard.html")) as f:
             return f.read()
 
@@ -590,6 +594,8 @@ try:
             raise HTTPException(404, "paper.html not built; run build_site.py")
         with open(path, encoding="utf-8") as f:
             return f.read()
+    import unified_site
+    unified_site.register(app, HERE)                                # /ui, /data, /paper-fragment, /dashboard
 except ImportError:                                                 # fastapi not installed: CLI still works
     app = None
 

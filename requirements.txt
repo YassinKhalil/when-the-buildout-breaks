@@ -3,3 +3,5 @@ scipy
 fastapi
 uvicorn
 markdown
+joblib
+yfinance

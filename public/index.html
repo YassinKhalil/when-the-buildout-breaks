@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Bust Odds: executive overview and working paper</title>
+<meta name="description" content="How likely is an AI investment bust, and how bad would it be? A nightly 10,000-draw risk run: expected value, VaR and CVaR for credit losses, chip and equity drawdowns and sovereign rescue spend. Open research.">
+<link rel="canonical" href="https://aibust.ykhalil.com/">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Bust Odds">
+<meta property="og:title" content="AI Bust Odds: how likely is an AI bust, and how bad would it be?">
+<meta property="og:description" content="A nightly 10,000-draw risk run with plain-language ratings, ETF price implications and the full working paper. Open research by Yassin Khalil.">
+<meta property="og:url" content="https://aibust.ykhalil.com/">
+<meta property="og:image" content="https://aibust.ykhalil.com/assets/aibust-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/ui/app.css">
+<script defer src="/_a/a.js" data-website-id="d7dea2d0-44c4-4376-a4f0-57e8f8df3db1"></script>
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="https://ykhalil.com/" aria-label="Yassin Khalil, home"><i>YK</i><span>AI Bust Odds</span></a>
+  <nav class="links" aria-label="Sections">
+    <a href="#overview">Overview</a><a href="#targets">Price targets</a><a href="#history">History</a>
+    <a href="#deep-dive" data-open-deep>Working paper</a><a href="/open-source/">Open source</a>
+  </nav>
+</div></header>
+
+<main id="overview">
+<section class="hero wrap">
+  <p class="kicker">Executive overview <span id="stamp" class="stamp">loading…</span></p>
+  <h1>How likely is an AI bust, and how bad would it be?</h1>
+  <p class="lede" id="lede">Ten thousand simulated futures, rerun every night on live market data. The numbers below turn them into ratings, price implications and a plain-language read.</p>
+  <div id="kpis" class="kpis" aria-live="polite"></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-ratings">
+  <h2 id="h-ratings" class="sr">Risk ratings</h2>
+  <div id="ratings" class="ratings"></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-dist">
+  <div class="card chartcard">
+    <div class="chead">
+      <div><h2 id="h-dist">Distribution of outcomes</h2>
+      <p class="sub" id="dist-sub"></p></div>
+      <div class="tabs" role="tablist" aria-label="Outcome measure" id="measure-tabs"></div>
+    </div>
+    <div id="hero-chart" class="chart" role="img" aria-label="Density chart of simulated outcomes"></div>
+    <ul class="legend" id="hero-legend"></ul>
+    <p class="read" id="hero-read"></p>
+  </div>
+</section>
+
+<section class="wrap" id="targets" aria-labelledby="h-targets">
+  <div class="card">
+    <h2 id="h-targets">What it means for prices</h2>
+    <p class="sub">Model F drawdowns applied to today's closing prices. These are scenario levels from a stress model, not forecasts or price targets.</p>
+    <div id="targets-body" class="targets"></div>
+  </div>
+</section>
+
+<section class="wrap" id="history" aria-labelledby="h-hist">
+  <div class="card">
+    <h2 id="h-hist">Risk over time</h2>
+    <p class="sub" id="hist-sub"></p>
+    <div id="hist-chart" class="chart short" role="img" aria-label="Time series of base-case and tail risk"></div>
+    <ul class="legend" id="hist-legend"></ul>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-inputs">
+  <div class="card">
+    <h2 id="h-inputs">What went into tonight's run</h2>
+    <div id="inputs-body" class="inputs"></div>
+  </div>
+</section>
+
+<section class="wrap deepbar">
+  <button id="deep-toggle" class="deepbtn" aria-expanded="false" aria-controls="deep-dive">
+    <span>View Working Paper &amp; Deep Dive</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</section>
+
+<section id="deep-dive" class="wrap deep" hidden aria-label="Working paper and deep dive">
+  <div class="tabs deeptabs" role="tablist" aria-label="Deep dive sections">
+    <button role="tab" id="t-mc" aria-controls="p-mc" aria-selected="true">Monte Carlo detail</button>
+    <button role="tab" id="t-paper" aria-controls="p-paper" aria-selected="false" tabindex="-1">Working paper</button>
+    <button role="tab" id="t-method" aria-controls="p-method" aria-selected="false" tabindex="-1">Method &amp; limits</button>
+  </div>
+  <div role="tabpanel" id="p-mc" aria-labelledby="t-mc"></div>
+  <div role="tabpanel" id="p-paper" aria-labelledby="t-paper" hidden>
+    <p class="sub" id="paper-status">Loading the paper…</p>
+    <div id="paper-host"></div>
+  </div>
+  <div role="tabpanel" id="p-method" aria-labelledby="t-method" hidden></div>
+</section>
+</main>
+
+<footer><div class="wrap fgrid">
+  <p><b>Not investment advice.</b> Model output for analysis, resting on stated judgment calls. It is not a forecast or a recommendation. The paper, code and documentation were written by Claude (Anthropic) at the direction of Yassin Khalil.</p>
+  <nav aria-label="Links"><a href="/paper">Paper as a standalone page</a><a href="/open-source/">Open-source docs</a><a href="https://github.com/YassinKhalil/when-the-buildout-breaks" rel="noopener">Source code</a><a href="https://ykhalil.com/">ykhalil.com</a></nav>
+</div></footer>
+<div id="tip" class="tip" role="status" hidden></div>
+<script type="module" src="/ui/app.js"></script>
+</body>
+</html>

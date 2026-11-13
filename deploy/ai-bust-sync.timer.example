@@ -1,0 +1,9 @@
+[Unit]
+Description=Check for the nightly AI-bust simulation commit
+[Timer]
+# the GitHub Action runs at 22:40 UTC on weekdays; check shortly after, and hourly as a safety net
+OnCalendar=*-*-* 22:55:00
+OnCalendar=hourly
+Persistent=true
+[Install]
+WantedBy=timers.target

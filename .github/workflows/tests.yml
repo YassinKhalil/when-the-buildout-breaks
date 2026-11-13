@@ -8,5 +8,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
       - run: pip install -r requirements.txt
-      - run: python -m unittest test_ai_bust_live -v
+      - run: python -m unittest test_ai_bust_live test_quant -v
